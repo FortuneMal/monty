@@ -26,5 +26,6 @@ int is_valid_argument(char *argument);
 void push(stack_t **stack, int value);
 void pall(stack_t *stack);
 void free_stack(stack_t *stack);
+void pint(stack_t *stack, unsigned int line_number);
 
 #endif /* MONTY_H */

@@ -20,8 +20,6 @@ typedef struct interpreter_s
 } interpreter_t;
 
 
-extern interpreter_t interpreter;
-
 int monty_interpreter(int argument_count, char *argument_values[]);
 void execute(char *instruction, stack_t **stack, unsigned int line_number, FILE *file_pointer);
 int is_valid_argument(char *argument);

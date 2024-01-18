@@ -1,5 +1,7 @@
 #include "monty.h"
 
+extern interpreter_t interpreter;
+
 /**
 * main - Monty code interpreter entry point
 * @argc: number of command line arguments

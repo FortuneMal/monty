@@ -49,7 +49,14 @@ void execute(char *instruction, stack_t **stack,
 	{
 		swap(stack, line_number);
 	}
-
+	else if (strcmp(opcode, "add") == 0)
+	{
+		add(stack, line_number);
+	}
+	else if (strcmp(opcode, "nop") == 0)
+	{
+		return;
+	}
 	else
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);

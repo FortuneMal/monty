@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,18 +7,20 @@
 
 typedef struct stack_s
 {
-    int n;
-    struct stack_s *next;
+	int n;
+	struct stack_s *next;
 } stack_t;
-
 
 typedef struct interpreter_s
 {
-    FILE *file;
-    char *content;
-    stack_t *stack;
-    unsigned int line_number;
+	FILE *file;
+	char *content;
+	stack_t *stack;
+	unsigned int line_number;
 } interpreter_t;
+
+
+extern interpreter_t interpreter;
 
 int monty_interpreter(int argument_count, char *argument_values[]);
 void execute(char *instruction, stack_t **stack, unsigned int line_number, FILE *file_pointer);
@@ -27,5 +29,4 @@ void push(stack_t **stack, int value);
 void pall(stack_t *stack);
 void free_stack(stack_t *stack);
 
-#endif
-
+#endif /* MONTY_H */

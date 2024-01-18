@@ -8,38 +8,42 @@
  * @line_number: Current line number in the bytecode file
  * @file_pointer: Pointer to the bytecode file
  */
-void execute(char *instruction, stack_t **stack, unsigned int line_number, FILE *file_pointer)
+void execute(char *instruction, stack_t **stack,
+		unsigned int line_number, FILE *file_pointer)
 {
-    char *opcode, *argument;
+	char *opcode, *argument;
 
-    opcode = strtok(instruction, " \t\n");
-    if (opcode == NULL || opcode[0] == '#')
-        return;
+	opcode = strtok(instruction, " \t\n");
 
-    argument = strtok(NULL, " \t\n");
+	if (opcode == NULL || opcode[0] == '#')
+		return;
 
-    if (strcmp(opcode, "push") == 0)
-    {
-        if (argument == NULL || !is_valid_argument(argument))
-        {
-            fprintf(stderr, "L%u: usage: push integer\n", line_number);
-            fclose(file_pointer);
-            free_stack(*stack);
-            exit(EXIT_FAILURE);
-        }
-        push(stack, atoi(argument));
-    }
-    else if (strcmp(opcode, "pall") == 0)
-    {
-        pall(*stack);
-    }
-    else
-    {
-        fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
-        fclose(file_pointer);
-        free_stack(*stack);
-        exit(EXIT_FAILURE);
-    }
+	argument = strtok(NULL, " \t\n");
+
+	if (strcmp(opcode, "push") == 0)
+	{
+		if (argument == NULL || !is_valid_argument(argument))
+		{
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			fclose(file_pointer);
+			free_stack(*stack);
+			exit(EXIT_FAILURE);
+		}
+
+		push(stack, atoi(argument));
+
+	}
+	else if (strcmp(opcode, "pall") == 0)
+	{
+		pall(*stack);
+	}
+	else
+	{
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+		fclose(file_pointer);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
 }
 
 /**
@@ -49,17 +53,17 @@ void execute(char *instruction, stack_t **stack, unsigned int line_number, FILE 
  */
 int is_valid_argument(char *argument)
 {
-    int i = 0;
+	int i = 0;
 
-    if (argument == NULL)
-        return (0);
+	if (argument == NULL)
+		return (0);
 
-    while (argument[i] != '\0')
-    {
-        if (!isdigit(argument[i]) && argument[i] != '-')
-            return (0);
-        i++;
-    }
+	while (argument[i] != '\0')
+	{
 
-    return (1);
+		if (!isdigit(argument[i]) && argument[i] != '-')
+			return (0);
+		i++;
+	}
+	return (1);
 }

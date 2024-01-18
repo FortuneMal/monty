@@ -17,4 +17,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	*stack = top->next;
 	free(top);
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8162b8cad5aaee578cd608215011dcd28cbfead0

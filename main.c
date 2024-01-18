@@ -1,4 +1,8 @@
+#define _GNU_SOURCE
 #include "monty.h"
+#include <sys/types.h>
+#include <stdio.h>
+
 interpreter_t interpreter = {NULL, NULL, NULL, 0};
 /**
 * main - Monty code interpreter entry point
@@ -11,7 +15,7 @@ int main(int argc, char *argv[])
 	char *file_content;
 	FILE *file_pointer;
 	size_t buffer_size = 0;
-	ssize_t read_line = 1;
+	int read_line = 1;
 	stack_t *data_stack = NULL;
 	unsigned int line_counter = 0;
 
@@ -43,4 +47,3 @@ int main(int argc, char *argv[])
 	fclose(file_pointer);
 	return (0);
 }
-

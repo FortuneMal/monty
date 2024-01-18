@@ -28,10 +28,5 @@ void pall(stack_t *stack);
 void free_stack(stack_t *stack);
 void pint(stack_t *stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
-<<<<<<< HEAD
-
-=======
 void swap(stack_t **stack, unsigned int line_number);
->>>>>>> 8162b8cad5aaee578cd608215011dcd28cbfead0
 #endif /* MONTY_H */
-

@@ -57,6 +57,14 @@ void execute(char *instruction, stack_t **stack,
 	{
 		return;
 	}
+<<<<<<< HEAD
+=======
+	else if (strcmp(opcode, "sub") == 0)
+	{
+		sub(stack, line_number);
+	}
+
+>>>>>>> 42815b1 (sub)
 	else
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
